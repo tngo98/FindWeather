@@ -12,11 +12,15 @@
 <body>
     <div class="relative min-h-screen">
         {{>header}}
-        <div class="pb-16">
-            <img class="w-60" src="/img/me.jpg" />
+        <div class="pb-16 ml-auto mr-auto w-full justify-center text-center">
+            <p class="m-4">This site was created by Tommy Ngo. It uses data from <a
+                    class="text-blue-700 hover:text-indigo-200" href="https://www.mapbox.com/">mapbox.com</a> and <a
+                    class="text-blue-700 hover:text-indigo-200" href="https://weatherstack.com/">weatherstack.com</a>!
+            </p>
+            <img class="ml-auto mr-auto w-72 border-blue-700 border-2 rounded-md" src="/img/me.jpg" />
         </div>
+        {{>footer}}
     </div>
-    {{>footer}}
 
     <script src="./js/app.js"></script>
 </body>
