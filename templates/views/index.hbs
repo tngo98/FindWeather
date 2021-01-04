@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="/img/weather.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+</head>
+
+<body>
+
+    <div class="relative min-h-screen">
+        {{>header}}
+        <div class="pb-16 ml-auto mr-auto w-96 mt-4 justify-center text-center">
+            <div class="m-2 p-4 from-blue-700 to-purple-500 bg-gradient-to-r rounded-md">
+                <h1 class="text-xl text-white">Use this site to find out the weather!</h1>
+                <form>
+                    <input class="border-2 rounded-md w-60" placeholder="Location">
+                    <button class="text-white border-2 rounded-md w-20 hover:bg-gray-400">Search</button>
+                </form>
+            </div>
+
+            <p id="message-1"></p>
+            <p id="message-2"></p>
+        </div>
+        {{>footer}}
+    </div>
+
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
