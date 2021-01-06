@@ -35,8 +35,12 @@ window.addEventListener("resize", () => {
 
 const weatherForm = document.querySelector("form");
 const search = document.querySelector("input");
+const errorMsg = document.querySelector("#errorMsg");
 const messageOne = document.querySelector("#message-1");
 const messageTwo = document.querySelector("#message-2");
+const messageFour = document.querySelector("#message-4");
+const messageFive = document.querySelector("#message-5");
+const forecastDiv = document.querySelector("#forecast");
 
 messageOne.textContent = "";
 
@@ -44,16 +48,23 @@ weatherForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const location = search.value;
 
-  messageOne.textContent = "Loading...";
-  messageTwo.textContent = "";
+  errorMsg.textContent = "Loading...";
+  if (!forecastDiv.classList.contains("hidden")) {
+    forecastDiv.classList.add("hidden");
+  }
 
   fetch("/weather?address=" + location).then((response) => {
     response.json().then((data) => {
       if (data.error) {
-        messageOne.textContent = data.error;
+        errorMsg.textContent = data.error;
       } else {
+        errorMsg.textContent = "";
         messageOne.textContent = data.location;
-        messageTwo.textContent = data.forecast;
+        messageTwo.textContent = data.description;
+        document.querySelector("#message-3").src = data.icon;
+        messageFour.textContent = "Currently: " + data.temperature;
+        messageFive.textContent = "Feels Like: " + data.feelslike;
+        forecastDiv.classList.remove("hidden");
       }
     });
   });

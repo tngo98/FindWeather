@@ -13,15 +13,12 @@ const forecast = (latitude, longitude, callback) => {
       if (response.data.error) {
         callback("Unable to find location.", undefined);
       } else {
-        callback(
-          undefined,
-          response.data.current.weather_descriptions[0] +
-            ". It is " +
-            response.data.current.temperature +
-            " degrees out but it feels like " +
-            response.data.current.feelslike +
-            " degrees."
-        );
+        callback(undefined, {
+          description: response.data.current.weather_descriptions[0],
+          temperature: response.data.current.temperature + "°C",
+          feelslike: response.data.current.feelslike + "°C",
+          icon: response.data.current.weather_icons[0],
+        });
       }
     })
     .catch((error) => {
@@ -32,3 +29,10 @@ const forecast = (latitude, longitude, callback) => {
 };
 
 export { forecast };
+
+// response.data.current.weather_descriptions[0] +
+// ". It is " +
+// response.data.current.temperature +
+// " degrees out but it feels like " +
+// response.data.current.feelslike +
+// " degrees."

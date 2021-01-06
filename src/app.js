@@ -29,7 +29,7 @@ app.use(express.static(publicDirPath));
 
 app.get("", (req, res) => {
   res.render("index", {
-    title: "Weather App",
+    title: "Find Weather",
     name: "Tommy Ngo",
   });
 });
@@ -44,14 +44,17 @@ app.get("/about", (req, res) => {
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help",
-    message: "I will bring you to the promise land.",
+    howtouse:
+      "Just type in your location and Find Weather will display your results!",
+    email: "tommykhoango@gmail.com",
+    name: "Tommy Ngo",
   });
 });
 
 app.get("/weather", (req, res) => {
   if (!req.query.address) {
     return res.send({
-      error: "You must provide an address",
+      error: "You must provide an address.",
     });
   }
 
@@ -62,17 +65,24 @@ app.get("/weather", (req, res) => {
         return res.send({ error });
       }
 
-      forecast(latitude, longitude, (error, forecastData) => {
-        if (error) {
-          return res.send({ error });
-        }
+      forecast(
+        latitude,
+        longitude,
+        (error, { description, temperature, feelslike, icon } = {}) => {
+          if (error) {
+            return res.send({ error });
+          }
 
-        res.send({
-          forecast: forecastData,
-          location,
-          address: req.query.address,
-        });
-      });
+          res.send({
+            description,
+            temperature,
+            feelslike,
+            icon,
+            location,
+            address: req.query.address,
+          });
+        }
+      );
     }
   );
 });
@@ -80,7 +90,7 @@ app.get("/weather", (req, res) => {
 app.get("/products", (req, res) => {
   if (!req.query.search) {
     return res.send({
-      error: "You must provide a search term",
+      error: "You must provide a search term.",
     });
   }
   console.log(req.query.search);

@@ -12,8 +12,13 @@
 <body>
     <div class="relative min-h-screen">
         {{>header}}
-        <div class="pb-16">
-            <p class="text-gray-500">{{message}}</p>
+        <div class="pb-16 ml-auto mr-auto w-96 mt-4 justify-center text-center">
+            <div class="m-2 p-4 from-blue-700 to-purple-500 bg-gradient-to-r rounded-md">
+                <a class="text-white font-bold text-center">How to use:</a>
+                <p class="text-white pb-4">{{howtouse}}</p>
+                <a class="font-bold text-white text-center">For more inquiries: </a>
+                <p class="text-white">{{email}}</p>
+            </div>
         </div>
     </div>
     {{>footer}}
