@@ -18,9 +18,9 @@ Once in directory, make sure to install dependencies:
 ```bash
 npm install
 ```
-Now type in the following to find out how to use the application:
+Now type in the following to start the server:
 ```bash
-node src/app.js
+npm run dev
 ```
 Now go into your browser and type this into your URL:
 ```bash
